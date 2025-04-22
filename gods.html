@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>gods</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="jeu de survie">
+    <script src="./assets/scripts/jugement.js" defer></script>
+	<link rel="stylesheet" href="./assets/styles/style.css">
+</head>
+<body>
+	<header>
+		<h1>test Jeu</h1>
+		<p id="boutonSauvegarder">sauvegarder</p>
+	</header>
+	<main>
+		<div id="jeu">
+			<canvas id="mondeCanvas" width="1000" height="400"></canvas>
+			<div id="progress-container" style="display:none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+				width: 200px; height: 20px; border: 1px solid rgba(0, 0, 0, 0.5);">
+				<div id="progress-bar" style="height: 100%; width: 0%; background-color: rgba(0, 128, 0, 0.5);"></div>
+			</div>
+			<div class="case" onclick=`handleClickCase(${x}, ${y})`></div>
+			<div id="modale-bloc" class="modale-bloc modale-cachee">
+				<div class="contenu-modale">
+					<span id="fermer-modale" style="cursor:pointer; float:right;">❌</span>
+					<div id="contenu-bloc"></div>
+				</div>
+			</div>
+			<div id="modale-mouton" class="modale-mouton modale-cachee">
+				<div class="contenu-modale">
+					<span class="fermer-modale" onclick="fermerModaleMobs()">❌</span>
+					<div id="contenu-mouton"></div>
+				</div>
+			</div>
+			<div id="inventaire"></div>
+		</div>
+		<div id="curseur-personnalise"></div>
+	</main>
+	<footer>
+		<p>&copy; 2025 test de Jeu. Tous droits réservés.</p>
+	</footer>
+</body>

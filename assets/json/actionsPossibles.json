@@ -1,0 +1,267 @@
+[
+    {
+      "id": "a01",
+      "action": "temps de jeu",
+      "description": "Le personnage passe beaucoup de temps dans le monde.",
+      "effects": { "Maître du Temps": 3 }
+    },
+    {
+      "id": "a02",
+      "action": "observation de l'Univers",
+      "description": "Observer les étoiles, les constellations, cartographier le ciel.",
+      "effects": { "Maître du Temps": 1 }
+    },
+    {
+      "id": "a03",
+      "action": "découvertes dans l'Univers",
+      "description": "Découvrir des phénomènes comme des trous noirs ou les origines de l'Univers.",
+      "effects": { "Maître du Temps": 3 }
+    },
+    {
+      "id": "a04",
+      "action": "observation du temps",
+      "description": "Créer un calendrier ou observer les saisons.",
+      "effects": {
+        "Maître du Temps": 1,
+        "Détenteur de la Vérité": 1
+      }
+    },
+    {
+      "id": "a05",
+      "action": "méditer",
+      "description": "Pratiquer une contemplation silencieuse.",
+      "effects": {
+        "Maître du Temps": 1,
+        "Détenteur de la Vérité": 1,
+        "Gardien des Enfers": -1
+      }
+    },
+    {
+      "id": "a06",
+      "action": "courir",
+      "description": "Effectuer une action rapide de déplacement.",
+      "effects": { "Maître du Temps": -3 }
+    },
+    {
+      "id": "a07",
+      "action": "sauter",
+      "description": "Effectuer un saut.",
+      "effects": { "Maître du Temps": -1 }
+    },
+    {
+      "id": "a08",
+      "action": "dormir",
+      "description": "Se reposer pour récupérer de l'énergie.",
+      "effects": {
+        "Maître du Temps": -1,
+        "Détenteur de la Vérité": 1
+      }
+    },
+    {
+      "id": "a09",
+      "action": "réanimer des morts-vivants",
+      "description": "Ramener une créature morte à la vie.",
+      "effects": {
+        "Protecteur de la Vie": 3,
+        "Gardien des Enfers": -3
+      }
+    },
+    {
+      "id": "a10",
+      "action": "planter des végétaux",
+      "description": "Cultiver ou replanter des espèces végétales.",
+      "effects": { "Protecteur de la Vie": 1 }
+    },
+    {
+      "id": "a11",
+      "action": "tuer des animaux",
+      "description": "Mettre fin à la vie d’un animal.",
+      "effects": {
+        "Protecteur de la Vie": -3,
+        "Gardien des Enfers": 1
+      }
+    },
+    {
+      "id": "a12",
+      "action": "couper des arbres",
+      "description": "Abattre des arbres pour récolter du bois.",
+      "effects": { "Protecteur de la Vie": -1 }
+    },
+    {
+      "id": "a13",
+      "action": "ramasser des champignons",
+      "description": "Cueillir des champignons dans la nature.",
+      "effects": { "Protecteur de la Vie": -1 }
+    },
+    {
+      "id": "a14",
+      "action": "ramasser des végétaux",
+      "description": "Récolter des plantes (hors cueillette contrôlée).",
+      "effects": { "Protecteur de la Vie": -1 }
+    },
+    {
+      "id": "a15",
+      "action": "faire un sacrifice rituel",
+      "description": "Offrande vivante ou matérielle pour honorer un pouvoir supérieur.",
+      "effects": {
+        "Protecteur de la Vie": -3,
+        "Gardien des Enfers": 3
+      }
+    },
+    {
+      "id": "a16",
+      "action": "créer une machine destructrice",
+      "description": "Construire un dispositif capable de destruction.",
+      "effects": {
+        "Protecteur de la Vie": -1,
+        "Gardien des Enfers": 1,
+        "Porteur de la Connaissance": 1
+      }
+    },
+    {
+      "id": "a17",
+      "action": "allumer un feu",
+      "description": "Créer du feu à partir d’éléments naturels.",
+      "effects": { "Gardien des Enfers": 1 }
+    },
+    {
+      "id": "a18",
+      "action": "déclencher une catastrophe",
+      "description": "Provoquer un événement destructeur à grande échelle.",
+      "effects": { "Gardien des Enfers": 3 }
+    },
+    {
+      "id": "a19",
+      "action": "créer un langage écrit",
+      "description": "Inventer un système d’écriture.",
+      "effects": {
+        "Porteur de la Connaissance": 3,
+        "Sauveur des Souvenirs": 3,
+        "Profondeur de l'Oubli": -1
+      }
+    },
+    {
+      "id": "a20",
+      "action": "créer une IA",
+      "description": "Créer une intelligence artificielle autonome ou assistée.",
+      "effects": { "Porteur de la Connaissance": 1 }
+    },
+    {
+      "id": "a21",
+      "action": "animer des robots",
+      "description": "Donner vie à des robots via une IA indépendante.",
+      "effects": {
+        "Porteur de la Connaissance": 3,
+        "Détenteur de la Vérité": -1
+      }
+    },
+    {
+      "id": "a22",
+      "action": "analyser l'ADN d'une espèce",
+      "description": "Étudier le code génétique d’un organisme.",
+      "effects": { "Porteur de la Connaissance": 1 }
+    },
+    {
+      "id": "a23",
+      "action": "créer une espèce",
+      "description": "Donner naissance à une nouvelle forme de vie.",
+      "effects": { "Porteur de la Connaissance": 3 }
+    },
+    {
+      "id": "a24",
+      "action": "créer un artefact magique",
+      "description": "Forger un objet mystique ou unique porteur de mémoire.",
+      "effects": {
+        "Porteur de la Connaissance": 1,
+        "Sauveur des Souvenirs": 1
+      }
+    },
+    {
+      "id": "a25",
+      "action": "détruire une espèce",
+      "description": "Faire disparaître totalement une espèce vivante.",
+      "effects": {
+        "Porteur de la Connaissance": -1,
+        "Profondeur de l'Oubli": 3
+      }
+    },
+    {
+      "id": "a26",
+      "action": "détruire un robot",
+      "description": "Mettre fin à l’existence d’une entité mécanique.",
+      "effects": { "Porteur de la Connaissance": -1 }
+    },
+    {
+      "id": "a27",
+      "action": "prendre des notes chaque jour",
+      "description": "Consigner ses expériences régulièrement.",
+      "effects": { "Sauveur des Souvenirs": 1 }
+    },
+    {
+      "id": "a28",
+      "action": "créer une base de donnée",
+      "description": "Compiler des informations pour les retrouver facilement.",
+      "effects": { "Sauveur des Souvenirs": 3 }
+    },
+    {
+      "id": "a29",
+      "action": "bâtir un monument",
+      "description": "Ériger une structure durable et mémorielle.",
+      "effects": {
+        "Sauveur des Souvenirs": 1,
+        "Profondeur de l'Oubli": -3
+      }
+    },
+    {
+      "id": "a30",
+      "action": "créer une religion ou un mythe",
+      "description": "Élaborer une histoire ou croyance pour guider d'autres êtres.",
+      "effects": {
+        "Sauveur des Souvenirs": 1,
+        "Détenteur de la Vérité": 1,
+        "Profondeur de l'Oubli": -1
+      }
+    },
+    {
+      "id": "a31",
+      "action": "jours sans prise de notes",
+      "description": "Ignorer l’archivage ou l’écriture pendant plusieurs jours.",
+      "effects": { "Sauveur des Souvenirs": -3 }
+    },
+    {
+      "id": "a32",
+      "action": "effacer une mémoire",
+      "description": "Effacer volontairement une information ou un souvenir.",
+      "effects": {
+        "Sauveur des Souvenirs": -3,
+        "Profondeur de l'Oubli": 3
+      }
+    },
+    {
+      "id": "a33",
+      "action": "lecture des livres",
+      "description": "Lire et s’instruire à partir d’écrits.",
+      "effects": {
+        "Détenteur de la Vérité": 3,
+        "Profondeur de l'Oubli": -1
+      }
+    },
+    {
+      "id": "a34",
+      "action": "détruire un livre",
+      "description": "Faire disparaître un ouvrage ou texte.",
+      "effects": {
+        "Détenteur de la Vérité": -3,
+        "Profondeur de l'Oubli": 1
+      }
+    },
+    {
+      "id": "a35",
+      "action": "inventer un mensonge historique",
+      "description": "Créer une fausse vérité passée.",
+      "effects": {
+        "Détenteur de la Vérité": -3,
+        "Profondeur de l'Oubli": 3
+      }
+    }
+]  
