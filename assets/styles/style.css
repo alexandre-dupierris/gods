@@ -4,7 +4,7 @@
 body {
     position: relative;
     display: flex;
-    width: 100vw;
+    /* width: 100vw; */
     flex-direction: column;
     align-items: center;
     justify-content: end;
@@ -24,6 +24,8 @@ header {
 #mondeCanvas {
     border: 10px solid black;
     background-image: url(../images/blocs/etoiles.webp);
+    box-shadow: 16px 16px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
 }
 footer {
     position: relative;
@@ -54,10 +56,8 @@ footer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 4px;
-    margin-top: 10px;
-    padding: 10px;
-    width: 400px;
+    gap: 5px;
+    width: 380px;
 }
 .case-inventaire {
     width: 40px;
@@ -68,7 +68,12 @@ footer {
     align-items: center;
     justify-content: center;
     font-size: 12px;
-    box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
+    /* box-shadow: inset 0 0 3px rgba(0,0,0,0.3); */
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+.case-inventaire img {
+    border-radius: 8px;
 }
 #boutonSauvegarder {
     cursor: pointer;
@@ -91,4 +96,46 @@ footer {
     position: absolute;
     z-index: 1550;
     cursor: pointer;
+}
+#interface {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    padding: 10px;
+    gap: 20px;
+    justify-content: center;
+}
+#hud {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-left: 10px;
+}
+.barre {
+    width: 200px;
+    height: 24px;
+    border-radius: 4px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #cccccc77;
+    position: relative;
+}
+.stats {
+    display: flex;
+    flex-direction: row;
+    height: 24px;
+}
+.barre.vie .remplissage {
+    background-color: rgb(197, 0, 0);
+}
+.barre.faim .remplissage {
+    background-color: rgb(19, 160, 0);
+}
+.barre.air .remplissage {
+    background-color: rgb(139, 226, 255);
+}
+.remplissage {
+    height: 100%;
+    width: 100%;
+    transition: width 0.3s linear;
+    border-radius: 4px;
 }

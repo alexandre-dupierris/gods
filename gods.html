@@ -5,7 +5,19 @@
 	<title>gods</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="jeu de survie">
-    <script src="./assets/scripts/jugement.js" defer></script>
+	<script src="./assets/scripts/actions.js" defer></script>
+	<script src="./assets/scripts/blocs.js" defer></script>
+	<script src="./assets/scripts/ciel.js" defer></script>
+	<script src="./assets/scripts/game.js" defer></script>
+	<script src="./assets/scripts/inventaire.js" defer></script>
+	<script src="./assets/scripts/joueur.js" defer></script>
+	<script src="./assets/scripts/mobs.js" defer></script>
+	<script src="./assets/scripts/monde.js" defer></script>
+	<script src="./assets/scripts/physique.js" defer></script>
+	<script src="./assets/scripts/sauvegarde.js" defer></script>
+	<script src="./assets/scripts/score.js" defer></script>
+	<script src="./assets/scripts/tooltip.js" defer></script>
+    <script src="./assets/scripts/gods.js" defer></script>
 	<link rel="stylesheet" href="./assets/styles/style.css">
 </head>
 <body>
@@ -33,7 +45,30 @@
 					<div id="contenu-mouton"></div>
 				</div>
 			</div>
-			<div id="inventaire"></div>
+			<div id="interface">
+				<div id="hud">
+					<div class="stats">
+						<img src="./assets/images/icones/vie.png">
+						<div class="barre vie">
+							<div class="remplissage" id="barreVie"></div>
+						</div>
+					</div>
+					<div class="stats">
+						<img src="./assets/images/icones/faim.png">
+						<div class="barre faim">
+							<div class="remplissage" id="barreFaim"></div>
+						</div>
+					</div>
+					<div class="stats">
+						<img src="./assets/images/icones/oxygene.png">
+						<div class="barre air">
+							<div class="remplissage" id="barreAir"></div>
+						</div>
+					</div>
+
+				</div>
+				<div id="inventaire"></div>
+			</div>
 		</div>
 		<div id="curseur-personnalise"></div>
 	</main>
