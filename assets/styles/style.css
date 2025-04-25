@@ -4,7 +4,6 @@
 body {
     position: relative;
     display: flex;
-    /* width: 100vw; */
     flex-direction: column;
     align-items: center;
     justify-content: end;
@@ -138,4 +137,24 @@ footer {
     width: 100%;
     transition: width 0.3s linear;
     border-radius: 4px;
+}
+#pauseOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+#pauseOverlay button {
+    font-size: 2em;
+    padding: 1em 2em;
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
 }

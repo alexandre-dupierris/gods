@@ -1,5 +1,11 @@
 // Fonction de boucle de jeu
 function gameLoop(timestamp) {
+
+    if (jeuEnPause) {
+        requestAnimationFrame(gameLoop); // continue d'écouter les frames pour pouvoir reprendre
+        return;
+    }
+
     if (!lastTime) lastTime = timestamp;
     
     // Calculer le temps écoulé depuis la dernière frame
@@ -43,3 +49,4 @@ function startGame() {
     setupTooltipEvents();
     requestAnimationFrame(gameLoop);
 }
+

@@ -7,13 +7,13 @@ function getSkyGradient(time) {
 }
 
 // Fonction de filtre selon le temps
-function getDarknessOpacity(time) {
-    const maxOpacity = 0.5; // la nuit sera sombre mais pas noire
-    if (time >= 2000 && time <= 16000) return 0;
-    if (time < 2000) return maxOpacity * (1 - (time / 2000));
-    if (time > 16000) return maxOpacity * ((time - 16000) / 8000);
-    return maxOpacity;
-}
+// function getDarknessOpacity(time) {
+//     const maxOpacity = 0.5; // la nuit sera sombre mais pas noire
+//     if (time >= 2000 && time <= 16000) return 0;
+//     if (time < 2000) return maxOpacity * (1 - (time / 2000));
+//     if (time > 14000 && time < 16000) return maxOpacity * ((time - 14000) / 2000);
+//     return maxOpacity;
+// }
 
 // Fonction de parse des couleurs
 function parseCouleur(c) {

@@ -352,7 +352,7 @@ function afficherMonde(monMonde) {
         }
     }
 
-    const opacite = getDarknessOpacity(tempsJeu);
-    ctx.fillStyle = `rgba(0, 0, 0, ${opacite})`;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // const opacite = getDarknessOpacity(tempsJeu);
+    // ctx.fillStyle = `rgba(0, 0, 0, ${opacite})`;
+    // ctx.fillRect(0, 0, canvas.width, canvas.height);
 }

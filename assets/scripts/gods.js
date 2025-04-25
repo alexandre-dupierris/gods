@@ -1,3 +1,8 @@
+// Jeu en pause : non
+let jeuEnPause = false;
+const pauseOverlay = document.getElementById("pauseOverlay");
+const resumeButton = document.getElementById("resumeButton");
+
 // Dictionnaires pour compression/décompression des types de blocs
 const blocTypes = {
     th: "terre_herbeuse",
@@ -72,7 +77,6 @@ let joueur = {
     sousEauDepuis: null
 };
 
-
 // Variables de contrôle du temps et de la vitesse
 const FPS = 60; // Fréquence d'images par seconde souhaitée
 const STEP = 1000 / FPS; // Intervalle entre chaque mise à jour en ms
@@ -110,6 +114,29 @@ const touches = {
     d: false,
     espace: false
 };
+
+// Ecoute du bouton pause
+document.getElementById("pauseButton").addEventListener("click", () => {
+    jeuEnPause = true;
+    pauseOverlay.style.display = "flex";
+});
+
+// Ecoute du bouton pour sortir de pause
+// Quand on clique sur le bouton plein écran
+resumeButton.addEventListener("click", () => {
+    jeuEnPause = false;
+    lastTime = performance.now();
+    pauseOverlay.style.display = "none";
+});
+
+// Mise en pause quand fenêtre masquée
+document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+        // Pause le jeu
+        jeuEnPause = true;
+        pauseOverlay.style.display = "flex";
+    }
+});
 
 // Définition du curseur
 const curseur = document.getElementById("curseur-personnalise");

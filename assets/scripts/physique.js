@@ -113,3 +113,32 @@ function updatePhysique() {
         fermerModaleMobs();
     }
 }
+
+// Fonction de détection de collision
+function detecterCollision(x, y, direction) {
+    // direction peut être "haut", "bas", "gauche", "droite" ou undefined pour tous
+
+    // Positions à vérifier pour la collision avec hitbox
+    const positions = [
+        [Math.floor(x), Math.floor(y)],   // coin supérieur gauche
+        [Math.ceil(x), Math.floor(y)],    // coin supérieur droit
+        [Math.floor(x), Math.ceil(y)],    // coin inférieur gauche
+        [Math.ceil(x), Math.ceil(y)]      // coin inférieur droit
+    ];
+
+    // Si on saute vers le haut
+    if (direction === "haut") {
+        // Vérifier les coins supérieurs pour les collisions en haut
+        positions[0][1] = Math.floor(y);
+        positions[1][1] = Math.floor(y);
+    }
+    
+    for (const [checkX, checkY] of positions) {
+        const bloc = getBlocAt(checkX, checkY);
+        if (bloc && estBlocSolide(bloc.type)) {
+            return true;
+        }
+    }
+    
+    return false;
+}
