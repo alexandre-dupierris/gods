@@ -81,6 +81,11 @@ function creuserTerre(x, y) {
     afficherBarreDeProgression(() => {
         remplacerBlocParCiel(x, y, monMonde);
         ajouterObjetDansInventaire("terre", 1);
+        const blocDessus = getBlocAt(x, y + 1);
+        if (blocDessus.type === "arbre"){
+            remplacerBlocParCiel(x, y + 1, monMonde);
+            ajouterObjetDansInventaire("bois", 10);
+        }
     });
 }
 // Fonction d'action creuser du sable
