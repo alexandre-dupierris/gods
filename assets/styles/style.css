@@ -158,3 +158,31 @@ footer {
     border-radius: 10px;
     cursor: pointer;
 }
+#confirmResetOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+}
+#confirmBox {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 2em;
+    border-radius: 10px;
+    text-align: center;
+}
+#confirmBox p {
+    margin-bottom: 1em;
+    font-size: 1.2em;
+}
+#confirmBox button {
+    margin: 0 1em;
+    padding: 0.5em 1em;
+    font-size: 1em;
+    cursor: pointer;
+}

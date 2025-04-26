@@ -24,12 +24,21 @@
 	<header>
 		<h1>test Jeu</h1>
 		<button id="boutonSauvegarder">sauvegarder</button>
+		<button id="resetButton">recommencer</button>
 		<button id="pauseButton">Pause</button>
 
 	</header>
 	<main>
 		<div id="pauseOverlay">
 			<button id="resumeButton"><p>jeu en pause</p>Reprendre</button>
+		</div>
+		<div id="confirmResetOverlay">
+			<div id="confirmBox">
+				<p>Es-tu sûr de vouloir tout réinitialiser ? <br>
+				(Efface toute la partie, y compris la sauvegarde)</p>
+				<button id="confirmYes">Oui</button>
+				<button id="confirmNo">Non</button>
+			</div>
 		</div>
 		<div id="jeu">
 			<canvas id="mondeCanvas" width="1000" height="400"></canvas>

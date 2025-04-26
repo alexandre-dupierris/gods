@@ -1,7 +1,13 @@
-// Jeu en pause : non
+// Variables de jeu en pause
 let jeuEnPause = false;
 const pauseOverlay = document.getElementById("pauseOverlay");
 const resumeButton = document.getElementById("resumeButton");
+
+// Variables de reset du jeu
+const resetButton = document.getElementById("resetButton");
+const confirmResetOverlay = document.getElementById("confirmResetOverlay");
+const confirmYes = document.getElementById("confirmYes");
+const confirmNo = document.getElementById("confirmNo");
 
 // Dictionnaires pour compression/décompression des types de blocs
 const blocTypes = {
@@ -114,6 +120,22 @@ const touches = {
     d: false,
     espace: false
 };
+
+// Quand on clique sur Reset
+resetButton.addEventListener("click", () => {
+    confirmResetOverlay.style.display = "flex"; // Affiche la fenêtre de confirmation
+});
+
+// Si l'utilisateur confirme
+confirmYes.addEventListener("click", () => {
+    localStorage.clear();  // Efface la sauvegarde
+    location.reload();     // Recharge la page
+});
+
+// Si l'utilisateur annule
+confirmNo.addEventListener("click", () => {
+    confirmResetOverlay.style.display = "none"; // Cache la fenêtre
+});
 
 // Ecoute du bouton pause
 document.getElementById("pauseButton").addEventListener("click", () => {
