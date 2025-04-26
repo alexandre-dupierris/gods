@@ -67,7 +67,7 @@ let ancienneCouleurHaut = "#000000";
 let ancienneCouleurBas = "#000000";
 let dernierTickHerbe = 0;
 const largeur = 401; // x = -200 à 200
-const hauteur = 16;   // y = 0 à -15
+const hauteur = 21;   // y = 0 à -20
 const xMin = -200;
 const xMax = 200;
 const yMax = 0;

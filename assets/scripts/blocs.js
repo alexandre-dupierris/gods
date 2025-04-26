@@ -172,10 +172,20 @@ function ouvrirModaleBloc(bloc) {
                     // Vérifier qu'aucun mob n'occupe l'emplacement
                     const mobPresent = mesMobs.some(mob => {
                         const distanceMob = Math.hypot(mob.x - bloc.x - 0.5, mob.y - bloc.y - 0.5);
-                        return distanceMob < 1; // Rayon de sécurité (ajuste si besoin)
+                        return distanceMob < 1; // Rayon de sécurité
                     });
                     if (mobPresent) break; // Annule la pose si un mob est là
-
+    
+                    // Vérification spéciale pour planter un arbre
+                    if (objetPorte.id === "arbre") {
+                        const blocDessous = getBlocAt(bloc.x, bloc.y - 1); // fonction pour récupérer le bloc sous celui-ci
+                        console.log(blocDessous.type);
+                        if (!blocDessous || (blocDessous.type !== "terre" && blocDessous.type !== "terre_herbeuse")) {
+                            afficherNotification("Les arbres ne peuvent être plantés que sur de la terre...");
+                            break; // Si pas de terre/terre_herbeuse en dessous, annule la pose
+                        }
+                    }
+    
                     bloc.type = objetPorte.id;
                     objetPorte.quantite -= 1;
                     const item = monInventaire[indexSelectionne];
@@ -193,7 +203,7 @@ function ouvrirModaleBloc(bloc) {
                 }
                 break;
         }
-    }
+    }    
 }
 
 // Fonction de changement d'état du bloc

@@ -35,12 +35,12 @@ function calculerPositionEcran(x, y) {
 // Fonction de génération d'un monde
 function genererMonde() {
     const monde = [];
-
-    const surfaceTypesBase = ["terre_herbeuse", "terre", "sable", "roche", "eau"];
+    const cavernes = [];
+    const surfaceTypesBase = ["terre_herbeuse", "sable", "roche", "eau"];
 
     const resourceChances = {
-        diamant: 0.001,
-        or: 0.005,
+        diamant: 0.002,
+        or: 0.008,
         cuivre: 0.01,
         fer: 0.01,
         charbon: 0.02,
@@ -49,7 +49,40 @@ function genererMonde() {
 
     const surfaceLigne = [];
 
-    // Étape 1 : Générer la surface
+    // Génère des cavernes de terre + vide avant de construire le monde
+    for (let i = 0; i < largeur; i++) {
+        cavernes[i] = [];
+        for (let j = 0; j < hauteur; j++) {
+            cavernes[i][j] = false; // Par défaut pas de caverne
+        }
+    }
+
+    // Aléatoirement créer quelques cavernes
+    const nombreDeCavernes = Math.floor(largeur * 0.08); // 8% du monde
+
+    for (let n = 0; n < nombreDeCavernes; n++) {
+        const centreX = xMin + Math.floor(Math.random() * largeur);
+        const centreY = yMax - Math.floor(Math.random() * hauteur);
+
+        const taille = Math.floor(Math.random() * 3) + 2; // entre 2 et 4
+
+        // Dessiner une petite caverne
+        for (let dx = -taille; dx <= taille; dx++) {
+            for (let dy = -taille; dy <= taille; dy++) {
+                const x = centreX + dx;
+                const y = centreY + dy;
+                if (x >= xMin && x <= xMax && y >= yMax - hauteur + 2 && y <= yMax) {
+                    if (Math.sqrt(dx * dx + dy * dy) <= taille) {
+                        const idx = x - xMin;
+                        const idy = yMax - y;
+                        cavernes[idx][idy] = true;
+                    }
+                }
+            }
+        }
+    }
+
+    // Générer la surface
     for (let x = xMin; x <= xMin + largeur - 1; x++) {
         const idx = x - xMin;
     
@@ -72,7 +105,7 @@ function genererMonde() {
         surfaceLigne.push(type);
     }
 
-    // Étape 2 : Génération des profondeurs du ciel lissées
+    // Génération des profondeurs du ciel lissées
     const skyDepths = [];
     let previousDepth = Math.floor(Math.random() * 4) + 4;
 
@@ -88,7 +121,7 @@ function genererMonde() {
         previousDepth = newDepth;
     }
 
-    // Étape 3 : Construction du monde avec la surface lissée
+    // Construction du monde avec la surface lissée
     for (let x = xMin; x <= xMin + largeur - 1; x++) {
         const idx = x - xMin;
         const skyDepth = skyDepths[idx];
@@ -108,13 +141,13 @@ function genererMonde() {
                 type = surfaceType;
             } else {
                 const profondeurRelative = surfaceYLocal - y;
-                type = choisirBlocProfondeur(profondeurRelative);
+                type = choisirBlocProfondeur(profondeurRelative, x, y);
             }
             monde.push({ x, y, type });
         }
     }
 
-    // Étape 4 : Ajouter les murs infranchissables
+    // Ajouter les murs infranchissables
     const mursX = [xMin - 1, xMax + 1];
     mursX.forEach(x => {
         for (let y = yMax; y >= yMax - hauteur + 1; y--) {
@@ -122,10 +155,10 @@ function genererMonde() {
         }
     });
 
-    // Étape 5 : Propager l'eau
+    // Propager l'eau
     propagerEau(monde);
 
-    // Étape 6 : Création du fond du monde infranchissable
+    // Création du fond du monde infranchissable
     for (let x = xMin - 1; x <= xMax + 1; x++) {
         monde.push({ x, y: yMax - hauteur + 1, type: "mur" });
     }
@@ -133,18 +166,29 @@ function genererMonde() {
     return monde;
 
     // Générateur de bloc profond
-    function choisirBlocProfondeur(profondeurRelative) {
-        const baseRoche = 0.3;
-        const baseTerre = 0.65;
+    function choisirBlocProfondeur(profondeurRelative, x, y) {
+        const idx = x - xMin;
+        const idy = yMax - y;
     
-        // Limite la profondeur entre 0 et 20 pour l’ajustement
+        if (cavernes[idx] && cavernes[idx][idy]) {
+            // Si le bloc juste au-dessus est aussi une caverne => vide
+            const blocAuDessous = cavernes[idx] && cavernes[idx][idy + 1];
+    
+            if (blocAuDessous) {
+                return "vide"; // Continuer la poche d'air
+            } else {
+                return "terre"; // Fond de la caverne
+            }
+        }
+    
+        // Sinon comportement normal (majorité roche)
+        const baseRoche = 0.8;
+        const baseTerre = 0.2;
+    
         const profondeurNormale = Math.min(profondeurRelative / 20, 1);
+        const probaTerre = baseTerre * (1 - profondeurNormale);
+        const probaRoche = 1 - probaTerre;
     
-        // Plus profond = moins de terre, plus de roche
-        const probaTerre = baseTerre * (1 - profondeurNormale); // diminue avec la profondeur
-        const probaRoche = 1 - probaTerre; // reste de la proba pour la roche
-    
-        // D'abord, on gère les ressources rares
         const r = Math.random();
         let cumule = 0;
         for (const [type, proba] of Object.entries(resourceChances)) {
@@ -152,9 +196,9 @@ function genererMonde() {
             if (r < cumule) return type;
         }
     
-        // Puis, on applique les proba terre/roche
         return Math.random() < probaTerre ? "terre" : "roche";
     }
+    
 
     // Fonction de propagation initiale de l'eau
     function propagerEau(monde) {

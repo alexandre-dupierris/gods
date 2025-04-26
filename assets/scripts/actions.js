@@ -142,7 +142,11 @@ function contempler(type, x, y) {
         if (type === "arbre") {
             if (Math.random() < 1/3) {
                 ajouterObjetDansInventaire("fruit", 1);
-                afficherNotification("🍏 Tu as trouvé un fruit !");
+                afficherNotification("Tu as trouvé un fruit !");
+            }
+            else if (Math.random() > 9/10) {
+                ajouterObjetDansInventaire("arbre", 1);
+                afficherNotification("Tu as trouvé une pousse d'arbre !");
             }
             else {
                 afficherNotification("Cet arbre doit cacher quelques fruits...");
