@@ -69,7 +69,7 @@ function ouvrirModaleBloc(bloc) {
                         Tu peux le couper pour récupérer du bois,<br>
                         ou bien casser quelques branches.
                     </p>
-                    <button onclick="contempler(${bloc.x}, ${bloc.y})">Contempler l'arbre</button>
+                    <button onclick="contempler('${bloc.type}', ${bloc.x}, ${bloc.y})">Contempler l'arbre</button>
                     <button onclick="couperArbre(${bloc.x}, ${bloc.y})">Couper l'arbre</button>
                     <button onclick="casserBranches(${bloc.x}, ${bloc.y})">Casser des branches</button>
                 `;
@@ -79,7 +79,7 @@ function ouvrirModaleBloc(bloc) {
                 html = `
                     <h2>Terre herbeuse</h2>
                     <p>De la terre... On pourrait creuser...</p>
-                    <button onclick="contempler(${bloc.x}, ${bloc.y})">Contempler l'herbe</button>
+                    <button onclick="contempler('${bloc.type}', ${bloc.x}, ${bloc.y})">Contempler l'herbe</button>
                     <button onclick="creuserTerre(${bloc.x}, ${bloc.y})">Creuser</button>
                 `;
                 break;
@@ -88,7 +88,7 @@ function ouvrirModaleBloc(bloc) {
                 html = `
                     <h2>Terre</h2>
                     <p>De la terre... On pourrait creuser...</p>
-                    <button onclick="contempler(${bloc.x}, ${bloc.y})">Contempler la terre</button>
+                    <button onclick="contempler('${bloc.type}', ${bloc.x}, ${bloc.y})">Contempler la terre</button>
                     <button onclick="creuserTerre(${bloc.x}, ${bloc.y})">Creuser</button>
                 `;
                 break;
@@ -97,7 +97,7 @@ function ouvrirModaleBloc(bloc) {
                 html = `
                     <h2>Sable</h2>
                     <p>Du sable... On pourrait creuser...</p>
-                    <button onclick="contempler(${bloc.x}, ${bloc.y})">Contempler le sable</button>
+                    <button onclick="contempler('${bloc.type}', ${bloc.x}, ${bloc.y})">Contempler le sable</button>
                     <button onclick="creuserSable(${bloc.x}, ${bloc.y})">Creuser</button>
                 `;
                 break;
@@ -106,7 +106,7 @@ function ouvrirModaleBloc(bloc) {
                 html = `
                     <h2>Roche</h2>
                     <p>Un rocher solide. Ça sent le coup de pioche !</p>
-                    <button onclick="contempler(${bloc.x}, ${bloc.y})">Contempler la roche</button>
+                    <button onclick="contempler('${bloc.type}', ${bloc.x}, ${bloc.y})">Contempler la roche</button>
                     <button onclick="minerRocher(${bloc.x}, ${bloc.y})">Miner</button>
                 `;
                 break;
@@ -115,7 +115,7 @@ function ouvrirModaleBloc(bloc) {
                 html = `
                     <h2>Pile de bois</h2>
                     <p>Du bois bien empilé</p>
-                    <button onclick="contempler(${bloc.x}, ${bloc.y})">Contempler la pile de bois</button>
+                    <button onclick="contempler('${bloc.type}', ${bloc.x}, ${bloc.y})">Contempler la pile de bois</button>
                     <button onclick="ramasserBois(${bloc.x}, ${bloc.y})">Ramasser</button>
                 `;
                 break;
@@ -124,7 +124,7 @@ function ouvrirModaleBloc(bloc) {
                 html = `
                     <h2>Laine</h2>
                     <p>Une belle laine</p>
-                    <button onclick="contempler(${bloc.x}, ${bloc.y})">Contempler la laine</button>
+                    <button onclick="contempler('${bloc.type}', ${bloc.x}, ${bloc.y})">Contempler la laine</button>
                     <button onclick="ramasserLaine(${bloc.x}, ${bloc.y})">Ramasser</button>
                 `;
                 break;
@@ -133,7 +133,7 @@ function ouvrirModaleBloc(bloc) {
                 html = `
                     <h2>Lait</h2>
                     <p>Un seau de lait</p>
-                    <button onclick="contempler(${bloc.x}, ${bloc.y})">Contempler le seau</button>
+                    <button onclick="contempler('${bloc.type}', ${bloc.x}, ${bloc.y})">Contempler le seau</button>
                     <button onclick="ramasserLait(${bloc.x}, ${bloc.y})">Ramasser</button>
                 `;
                 break;
@@ -146,7 +146,7 @@ function ouvrirModaleBloc(bloc) {
                 html = `
                     <h2>${bloc.type}</h2>
                     <p>Minerais de ressource rare</p>
-                    <button onclick="contempler(${bloc.x}, ${bloc.y})">Contempler le minerais</button>
+                    <button onclick="contempler('${bloc.type}', ${bloc.x}, ${bloc.y})">Contempler le minerais</button>
                     <button onclick="piocher('${bloc.type}', ${bloc.x}, ${bloc.y})">Piocher</button>
                 `;
                 break;
@@ -155,7 +155,7 @@ function ouvrirModaleBloc(bloc) {
                 html = `
                     <h2>${bloc.type}</h2>
                     <p>C'est beau !</p>
-                    <button onclick="contempler(${bloc.x}, ${bloc.y})">Contempler les lieux</button>
+                    <button onclick="contempler('${bloc.type}', ${bloc.x}, ${bloc.y})">Contempler les lieux</button>
                 `;
                 break;
         }

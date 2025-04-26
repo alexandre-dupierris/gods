@@ -22,19 +22,23 @@ function traireLeMouton(x, y) {
 function tuerLeMouton(x, y) {
     travaux = true;
 
-    const rayon = 1; // tolérance
+    const rayon = 5; // tolérance
 
     for (let i = 0; i < mesMobs.length; i++) {
         const mob = mesMobs[i];
         if (mob.type === "mouton") {
             const distance = Math.sqrt((mob.x - x) ** 2 + (mob.y - y) ** 2);
             if (distance < rayon) {
-                console.log("Tu tues le mouton en", mob.x, mob.y);
+                afficherNotification("Tu as tué un mouton.");
                 ajouterObjetDansInventaire("viande", 16);
-                mesMobs.splice(i, 1); // tue le mouton (le retire du tableau)
-                break; // on en tue qu’un seul
+                mesMobs.splice(i, 1);
+                moutonTrouve = true;
+                break;
             }
         }
+    }
+    if (!moutonTrouve) {
+        afficherNotification("Le mouton s'en est tiré cette fois-ci...");
     }
     fermerModaleMobs();
     afficherBarreDeProgression(() => {});
@@ -130,11 +134,20 @@ function piocher(type, x, y) {
     });
 }
 // Fonction d'action contempler
-function contempler(x, y) {
+function contempler(type, x, y) {
     travaux = true;
     console.log("Tu contemples les lieux", x, y);
     fermerModale();
     afficherBarreDeProgression(() => {
+        if (type === "arbre") {
+            if (Math.random() < 1/3) {
+                ajouterObjetDansInventaire("fruit", 1);
+                afficherNotification("🍏 Tu as trouvé un fruit !");
+            }
+            else {
+                afficherNotification("Cet arbre doit cacher quelques fruits...");
+            }
+        }
     });
 }
 

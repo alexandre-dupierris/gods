@@ -57,6 +57,21 @@ function initialiserInventaire() {
                     // miseAJourAffichageInventaire();
                     majAffichageInventaire();
     
+                }
+                else if (item.id === "fruit") {
+                    // Nourrir le joueur
+                    joueur.nourriture = Math.min(100, joueur.nourriture + 5);
+                    
+                    // Réduire la quantité de viande
+                    item.quantite -= 1;
+    
+                    // Si la quantité tombe à 0, on vide la case
+                    if (item.quantite <= 0) {
+                        monInventaire[index] = { id: null, quantite: 0 };
+                    }
+    
+                    // miseAJourAffichageInventaire();
+                    majAffichageInventaire();
                 } else {
                     // Sélection d’un autre type d’objet
                     itemSelectionne = item;

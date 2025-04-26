@@ -29,5 +29,5 @@ function sauvegarderPartie() {
         joueur
     };
     localStorage.setItem("sauvegarde", JSON.stringify(sauvegardeData));
-    console.log("💾 Partie sauvegardée !");
+    afficherNotification("💾 Partie sauvegardée !");
 }
