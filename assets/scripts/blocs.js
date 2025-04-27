@@ -33,7 +33,7 @@ function updateHerbe() {
 
                     const herbeVoisine = voisinsHerbe.some(b => b && b.type === "terre_herbeuse");
                     
-                    if (herbeVoisine && Math.random() < 0.1) {
+                    if (herbeVoisine && Math.random() < 0.08) {
                         
                         bloc.type = "terre_herbeuse";
                     }
@@ -41,7 +41,7 @@ function updateHerbe() {
             }
             else if (bloc && bloc.type === "terre_labouree"){
                 if (blocDessus && blocDessus.type === "graine") {
-                    if (Math.random() < 0.05) {
+                    if (Math.random() < 0.02) {
                         blocDessus.type = "legume";
                     }
                 }

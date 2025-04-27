@@ -6,8 +6,8 @@ function afficherNotification(message) {
     notif.textContent = message;
     notifications.appendChild(notif);
 
-    // Supprimer le message après 3 secondes
+    // Supprimer le message après 1,5 secondes
     setTimeout(() => {
         notif.remove();
-    }, 3000);
+    }, 1500);
 }
