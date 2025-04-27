@@ -8,7 +8,7 @@ function getBlocAt(x, y) {
     return monMonde.find(bloc => bloc.x === x && bloc.y === y);
 }
 
-// Fonction de mise à jour de l'herbe
+// Fonction de mise à jour de l'herbe et des légumes
 function updateHerbe() {
     const maintenant = Date.now();
     if (maintenant - dernierTickHerbe < 10000) return;
@@ -19,7 +19,7 @@ function updateHerbe() {
             const blocDessus = getBlocAt(x, y + 1);
             if (bloc && bloc.type === "terre") {
                 // Vérifier si au-dessus c'est exposé
-                if (blocDessus && ["ciel", "vide", "eau", "arbre", "lait"].includes(blocDessus.type)) {
+                if (blocDessus && ["ciel", "vide", "eau", "arbre", "lait", "graine"].includes(blocDessus.type)) {
 
                     // Vérifie les voisins à gauche et à droite (haut, milieu, bas)
                     const voisinsHerbe = [
@@ -39,6 +39,13 @@ function updateHerbe() {
                     }
                 }
             }
+            else if (bloc && bloc.type === "terre_labouree"){
+                if (blocDessus && blocDessus.type === "graine") {
+                    if (Math.random() < 0.1) {
+                        blocDessus.type = "legume";
+                    }
+                }
+            }
         }
     }
 }
@@ -51,7 +58,7 @@ function estExpose(bloc) {
         getBlocAt(bloc.x + 1, bloc.y), // droite
         getBlocAt(bloc.x - 1, bloc.y)  // gauche
     ];
-    return voisins.some(b => b && ["ciel", "arbre", "eau", "lait", "bois", "laine", "graine"].includes(b.type));
+    return voisins.some(b => b && ["ciel", "arbre", "eau", "lait", "bois", "laine", "graine", "legume"].includes(b.type));
 }
 
 // Fonction d'interaction avec les blocs
@@ -81,6 +88,7 @@ function ouvrirModaleBloc(bloc) {
                     <p>De la terre... On pourrait creuser...</p>
                     <button onclick="contempler('${bloc.type}', ${bloc.x}, ${bloc.y})">Contempler l'herbe</button>
                     <button onclick="creuserTerre(${bloc.x}, ${bloc.y})">Creuser</button>
+                    <button onclick="labourerTerre(${bloc.x}, ${bloc.y})">Labourer</button>
                 `;
                 break;
 
@@ -90,6 +98,25 @@ function ouvrirModaleBloc(bloc) {
                     <p>De la terre... On pourrait creuser...</p>
                     <button onclick="contempler('${bloc.type}', ${bloc.x}, ${bloc.y})">Contempler la terre</button>
                     <button onclick="creuserTerre(${bloc.x}, ${bloc.y})">Creuser</button>
+                    <button onclick="labourerTerre(${bloc.x}, ${bloc.y})">Labourer</button>
+                `;
+                break;
+
+            case "terre_labouree":
+                html = `
+                    <h2>Terre labourée</h2>
+                    <p>De la terre... On pourrait creuser...</p>
+                    <button onclick="contempler('${bloc.type}', ${bloc.x}, ${bloc.y})">Contempler la terre</button>
+                    <button onclick="creuserTerre(${bloc.x}, ${bloc.y})">Creuser</button>
+                `;
+                break;
+
+            case "legume":
+                html = `
+                    <h2>Légumes</h2>
+                    <p>De bons légumes, pourquoi ne pas les cueillir ?</p>
+                    <button onclick="contempler('${bloc.type}', ${bloc.x}, ${bloc.y})">Contempler les légumes</button>
+                    <button onclick="cueillirLegumes(${bloc.x}, ${bloc.y})">Cueillir</button>
                 `;
                 break;
 
@@ -188,10 +215,16 @@ function ouvrirModaleBloc(bloc) {
                     // Vérification spéciale pour planter un arbre
                     if (objetPorte.id === "arbre") {
                         const blocDessous = getBlocAt(bloc.x, bloc.y - 1); // fonction pour récupérer le bloc sous celui-ci
-                        console.log(blocDessous.type);
                         if (!blocDessous || (blocDessous.type !== "terre" && blocDessous.type !== "terre_herbeuse")) {
                             afficherNotification("Les arbres ne peuvent être plantés que sur de la terre...");
                             break; // Si pas de terre/terre_herbeuse en dessous, annule la pose
+                        }
+                    }
+                    // Vérification spéciale pour poser des graines, ou du lait
+                    if (objetPorte.id === "graine" || objetPorte.id === "lait") {
+                        if (bloc.type === "eau") {
+                            afficherNotification("Cela doit être posé sur la terre ferme...");
+                            break;
                         }
                     }
     

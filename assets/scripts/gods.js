@@ -29,7 +29,9 @@ const blocTypes = {
     b: "bois",
     lt: "lait",
     ln: "laine",
-    g: "graine"
+    g: "graine",
+    tl: "terre_labouree",
+    lg: "legume"
 };
 
 // Dictionnaire des images
@@ -103,8 +105,8 @@ physique = {
     vitesseMax: 0.1,
     velocite: { x: 0, y: 0 },
     estAuSol: false,
-    blocSolides: ["terre_herbeuse", "terre", "sable", "roche", "mur", "diamant", "or", "cuivre", "fer", "charbon", "bois", "laine"],
-    blocTraversables: ["ciel", "eau", "vide", "arbre", "lait", "graine"]
+    blocSolides: ["terre_herbeuse", "terre", "sable", "roche", "mur", "diamant", "or", "cuivre", "fer", "charbon", "bois", "laine", "terre_labouree"],
+    blocTraversables: ["ciel", "eau", "vide", "arbre", "lait", "graine", "legume"]
 };
 
 // Variables pour le tooltip (affichage au survol des blocs)

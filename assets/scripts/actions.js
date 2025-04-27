@@ -88,6 +88,26 @@ function creuserTerre(x, y) {
         }
     });
 }
+// Fonction d'action labourer la terre
+function labourerTerre(x, y) {
+    travaux = true;
+    console.log("Tu laboures la terre en", x, y);
+    fermerModale();
+    afficherBarreDeProgression(() => {
+        const terre_labouree = getBlocAt(x, y);
+        terre_labouree.type = "terre_labouree";
+    });
+}
+// Fonction d'action cueillir les légumes
+function cueillirLegumes(x, y) {
+    travaux = true;
+    console.log("Tu cueilles les légumes en", x, y);
+    fermerModale();
+    afficherBarreDeProgression(() => {
+        remplacerBlocParCiel(x, y, monMonde);
+        ajouterObjetDansInventaire("legume", 8);
+    });
+}
 // Fonction d'action creuser du sable
 function creuserSable(x, y) {
     travaux = true;

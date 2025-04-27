@@ -44,7 +44,7 @@ function initialiserInventaire() {
             } else if (item.id) {
                 if (item.id === "viande") {
                     // Nourrir le joueur
-                    joueur.nourriture = Math.min(100, joueur.nourriture + 20);
+                    joueur.nourriture = Math.min(100, joueur.nourriture + 25);
                     
                     // Réduire la quantité de viande
                     item.quantite -= 1;
@@ -58,11 +58,11 @@ function initialiserInventaire() {
                     majAffichageInventaire();
     
                 }
-                else if (item.id === "fruit") {
+                else if (item.id === "fruit" || item.id === "legume") {
                     // Nourrir le joueur
                     joueur.nourriture = Math.min(100, joueur.nourriture + 5);
                     
-                    // Réduire la quantité de viande
+                    // Réduire la quantité de nourriture
                     item.quantite -= 1;
     
                     // Si la quantité tombe à 0, on vide la case
