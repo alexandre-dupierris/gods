@@ -1,29 +1,27 @@
 // Fonction pour tondre les moutons
 function tondreLesMoutons(x, y) {
     travaux = true;
-    afficherNotification("Tu as tondu le mouton.");
     fermerModaleMobs();
     afficherBarreDeProgression(() => {
         ajouterObjetDansInventaire("laine", 1);
+        afficherNotification("Tu as tondu le mouton.");
     });
 }
 
 // Fonction pour traire les moutons
 function traireLeMouton(x, y) {
     travaux = true;
-    afficherNotification("Tu as trait le mouton.");
     fermerModaleMobs();
     afficherBarreDeProgression(() => {
         ajouterObjetDansInventaire("lait", 1);
+        afficherNotification("Tu as trait le mouton.");
     });
 }
 
 // Fonction pour tuer les moutons
 function tuerLeMouton(x, y) {
     travaux = true;
-
     const rayon = 5; // tolérance
-
     for (let i = 0; i < mesMobs.length; i++) {
         const mob = mesMobs[i];
         if (mob.type === "mouton") {
@@ -41,46 +39,48 @@ function tuerLeMouton(x, y) {
         afficherNotification("Le mouton s'en est tiré cette fois-ci...");
     }
     fermerModaleMobs();
-    afficherBarreDeProgression(() => {});
+    afficherBarreDeProgression(() => {
+
+    });
 }
 
 // Fonction d'action couper un arbre
 function couperArbre(x, y) {
     travaux = true;
-    afficherNotification("Tu as coupé l'arbre...");
     fermerModale();
     afficherBarreDeProgression(() => {
         remplacerBlocParCiel(x, y, monMonde);
         ajouterObjetDansInventaire("bois", 20);
+        afficherNotification("Tu as coupé l'arbre...");
     });
 }
 // Fonction d'action casser une branche
 function casserBranches(x, y) {
     travaux = true;
-    afficherNotification("Tu as cassé une branche.");
     fermerModale();
     afficherBarreDeProgression(() => {
         ajouterObjetDansInventaire("bois", 1);
+        afficherNotification("Tu as cassé une branche.");
     });
 }
 // Fonction d'action miner un rocher
 function minerRocher(x, y) {
     travaux = true;
-    afficherNotification("Tu as miné un rocher.");
     fermerModale();
     afficherBarreDeProgression(() => {
         remplacerBlocParCiel(x, y, monMonde);
         ajouterObjetDansInventaire("roche", 1);
+        afficherNotification("Tu as miné un rocher.");
     });
 }
 // Fonction d'action creuser de la terre
 function creuserTerre(x, y) {
     travaux = true;
-    afficherNotification("Tu as creusé la terre.");
     fermerModale();
     afficherBarreDeProgression(() => {
         remplacerBlocParCiel(x, y, monMonde);
         ajouterObjetDansInventaire("terre", 1);
+        afficherNotification("Tu as creusé la terre.");
         const blocDessus = getBlocAt(x, y + 1);
         if (blocDessus.type === "arbre"){
             remplacerBlocParCiel(x, y + 1, monMonde);
@@ -99,81 +99,81 @@ function creuserTerre(x, y) {
 // Fonction d'action labourer la terre
 function labourerTerre(x, y) {
     travaux = true;
-    afficherNotification("Tu as labouré la terre.");
     fermerModale();
     afficherBarreDeProgression(() => {
         const terre_labouree = getBlocAt(x, y);
         terre_labouree.type = "terre_labouree";
+        afficherNotification("Tu as labouré la terre.");
     });
 }
 // Fonction d'action cueillir les légumes
 function cueillirLegumes(x, y) {
     travaux = true;
-    afficherNotification("Tu as cueilli des légumes.");
     fermerModale();
     afficherBarreDeProgression(() => {
         remplacerBlocParCiel(x, y, monMonde);
         ajouterObjetDansInventaire("legume", 8);
+        afficherNotification("Tu as cueilli des légumes.");
     });
 }
 // Fonction d'action creuser du sable
 function creuserSable(x, y) {
     travaux = true;
-    afficherNotification("Tu as creusé le sable.");
     fermerModale();
     afficherBarreDeProgression(() => {
         remplacerBlocParCiel(x, y, monMonde);
         ajouterObjetDansInventaire("sable", 1);
+        afficherNotification("Tu as creusé le sable.");
     });
 }
 // Fonction d'action ramasser le bois
 function ramasserBois(x, y) {
     travaux = true;
-    afficherNotification("Tu as ramassé du bois.");
     fermerModale();
     afficherBarreDeProgression(() => {
         remplacerBlocParCiel(x, y, monMonde);
         ajouterObjetDansInventaire("bois", 1);
+        afficherNotification("Tu as ramassé du bois.");
     });
 }
 // Fonction d'action ramasser la laine
 function ramasserLaine(x, y) {
     travaux = true;
-    afficherNotification("Tu as ramassé la laine.");
     fermerModale();
     afficherBarreDeProgression(() => {
         remplacerBlocParCiel(x, y, monMonde);
         ajouterObjetDansInventaire("laine", 1);
+        afficherNotification("Tu as ramassé la laine.");
     });
 }
 // Fonction d'action ramasser le lait
 function ramasserLait(x, y) {
     travaux = true;
-    afficherNotification("Tu as ramassé le seau de lait.");
     fermerModale();
     afficherBarreDeProgression(() => {
         remplacerBlocParCiel(x, y, monMonde);
         ajouterObjetDansInventaire("lait", 1);
+        afficherNotification("Tu as ramassé le seau de lait.");
     });
 }
 // Fonction d'action ramasser une graine
 function ramasserGraine(x, y) {
     travaux = true;
-    afficherNotification("Tu as ramassé la graine.");
     fermerModale();
     afficherBarreDeProgression(() => {
         remplacerBlocParCiel(x, y, monMonde);
         ajouterObjetDansInventaire("graine", 1);
+        afficherNotification("Tu as ramassé la graine.");
     });
 }
 // Fonction d'action piocher minerais
 function piocher(type, x, y) {
     travaux = true;
-    afficherNotification("Tu as pioché le minerais.");
     fermerModale();
     afficherBarreDeProgression(() => {
         remplacerBlocParCiel(x, y, monMonde);
         ajouterObjetDansInventaire(type, 1);
+        afficherNotification("Tu as pioché le minerais.");
     });
 }
 // Fonction d'action contempler
