@@ -128,6 +128,16 @@ function ramasserLait(x, y) {
         ajouterObjetDansInventaire("lait", 1);
     });
 }
+// Fonction d'action ramasser une graine
+function ramasserGraine(x, y) {
+    travaux = true;
+    console.log("Tu ramasses la graine", x, y);
+    fermerModale();
+    afficherBarreDeProgression(() => {
+        remplacerBlocParCiel(x, y, monMonde);
+        ajouterObjetDansInventaire("graine", 1);
+    });
+}
 // Fonction d'action piocher minerais
 function piocher(type, x, y) {
     travaux = true;
@@ -155,6 +165,15 @@ function contempler(type, x, y) {
             }
             else {
                 afficherNotification("Cet arbre doit cacher quelques fruits...");
+            }
+        }
+        if (type === "terre_herbeuse") {
+            if (Math.random() < 1/3) {
+                ajouterObjetDansInventaire("graine", 1);
+                afficherNotification("Tu as trouvé une graine !");
+            }
+            else {
+                afficherNotification("Il y a des graines dans cette herbe...");
             }
         }
     });

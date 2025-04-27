@@ -242,7 +242,7 @@ function propagerDeEau(x, y, monde) {
 
     for (const { dx, dy } of directions) {
         const voisin = monde.find(b => b.x === x + dx && b.y === y + dy);
-        if (voisin && (voisin.type === "vide" || voisin.type === "ciel")) {
+        if (voisin && (voisin.type === "vide" || voisin.type === "ciel" || voisin.type === "graine")) {
             voisin.type = "eau";
             console.log(`Propagation de l'eau en (${voisin.x}, ${voisin.y}).`);
             propagerDeEau(voisin.x, voisin.y, monde); // propagation récursive

@@ -28,7 +28,8 @@ const blocTypes = {
     rs: "roche_sombre",
     b: "bois",
     lt: "lait",
-    ln: "laine"
+    ln: "laine",
+    g: "graine"
 };
 
 // Dictionnaire des images
@@ -103,7 +104,7 @@ physique = {
     velocite: { x: 0, y: 0 },
     estAuSol: false,
     blocSolides: ["terre_herbeuse", "terre", "sable", "roche", "mur", "diamant", "or", "cuivre", "fer", "charbon", "bois", "laine"],
-    blocTraversables: ["ciel", "eau", "vide", "arbre", "lait"]
+    blocTraversables: ["ciel", "eau", "vide", "arbre", "lait", "graine"]
 };
 
 // Variables pour le tooltip (affichage au survol des blocs)

@@ -51,7 +51,7 @@ function estExpose(bloc) {
         getBlocAt(bloc.x + 1, bloc.y), // droite
         getBlocAt(bloc.x - 1, bloc.y)  // gauche
     ];
-    return voisins.some(b => b && ["ciel", "arbre", "eau", "lait", "bois", "laine"].includes(b.type));
+    return voisins.some(b => b && ["ciel", "arbre", "eau", "lait", "bois", "laine", "graine"].includes(b.type));
 }
 
 // Fonction d'interaction avec les blocs
@@ -135,6 +135,15 @@ function ouvrirModaleBloc(bloc) {
                     <p>Un seau de lait</p>
                     <button onclick="contempler('${bloc.type}', ${bloc.x}, ${bloc.y})">Contempler le seau</button>
                     <button onclick="ramasserLait(${bloc.x}, ${bloc.y})">Ramasser</button>
+                `;
+                break;
+
+            case "graine":
+                html = `
+                    <h2>Graine</h2>
+                    <p>Une graine plantée là</p>
+                    <button onclick="contempler('${bloc.type}', ${bloc.x}, ${bloc.y})">Contempler la graine</button>
+                    <button onclick="ramasserGraine(${bloc.x}, ${bloc.y})">Ramasser</button>
                 `;
                 break;
 
