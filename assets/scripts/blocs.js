@@ -41,7 +41,7 @@ function updateHerbe() {
             }
             else if (bloc && bloc.type === "terre_labouree"){
                 if (blocDessus && blocDessus.type === "graine") {
-                    if (Math.random() < 0.1) {
+                    if (Math.random() < 0.05) {
                         blocDessus.type = "legume";
                     }
                 }
@@ -267,7 +267,6 @@ function remplacerBlocParCiel(x, y, monde) {
 
     // Remplacement principal
     bloc.type = voisinAEau ? "eau" : "ciel";
-    console.log(`Le bloc en (${x}, ${y}) a été remplacé par ${bloc.type}.`);
 
     // Si on vient de placer de l'eau, propager autour
     if (bloc.type === "eau") {
@@ -277,7 +276,6 @@ function remplacerBlocParCiel(x, y, monde) {
         const blocDessous = monde.find(b => b.x === x && b.y === y - 1);
         if (blocDessous && (blocDessous.type === "vide" || blocDessous.type === "ciel")) {
             blocDessous.type = "ciel";
-            console.log(`Le bloc en dessous (${x}, ${y - 1}) remplacé par un bloc de ciel.`);
         }
     }
 }

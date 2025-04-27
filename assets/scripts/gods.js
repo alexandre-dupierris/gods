@@ -226,7 +226,7 @@ if (sauvegarde) {
     playerLocalisation = [0, 0];
     mesMobs = genererMobs();
     physique = physique;
-    monInventaire = Array(16).fill().map(() => ({id: null, quantite: 0}));
+    monInventaire = Array(20).fill().map(() => ({id: null, quantite: 0}));
     tempsJeu = 0;
     joueur = joueur;
     console.log("🆕 Nouvelle partie initialisée !");

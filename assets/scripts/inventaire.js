@@ -8,7 +8,7 @@ function initialiserInventaire() {
     // Si monInventaire n'est pas défini, initialiser avec un tableau vide
     if (!monInventaire) {
         monInventaire = [];
-        for (let i = 0; i < 16; i++) {
+        for (let i = 0; i < 20; i++) {
             monInventaire.push({
                 id: null,
                 quantite: 0
@@ -17,7 +17,7 @@ function initialiserInventaire() {
     }
 
     // Créer les cases d'inventaire dans le DOM
-    for (let i = 0; i < 16; i++) {
+    for (let i = 0; i < 20; i++) {
         const caseDiv = document.createElement("div");
         caseDiv.classList.add("case-inventaire");
         caseDiv.dataset.index = i;

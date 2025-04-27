@@ -1,7 +1,7 @@
 // Fonction pour tondre les moutons
 function tondreLesMoutons(x, y) {
     travaux = true;
-    console.log("Tu tonds le mouton en", x, y);
+    afficherNotification("Tu as tondu le mouton.");
     fermerModaleMobs();
     afficherBarreDeProgression(() => {
         ajouterObjetDansInventaire("laine", 1);
@@ -11,7 +11,7 @@ function tondreLesMoutons(x, y) {
 // Fonction pour traire les moutons
 function traireLeMouton(x, y) {
     travaux = true;
-    console.log("Tu trais le mouton en", x, y);
+    afficherNotification("Tu as trait le mouton.");
     fermerModaleMobs();
     afficherBarreDeProgression(() => {
         ajouterObjetDansInventaire("lait", 1);
@@ -47,7 +47,7 @@ function tuerLeMouton(x, y) {
 // Fonction d'action couper un arbre
 function couperArbre(x, y) {
     travaux = true;
-    console.log("Tu coupes l’arbre en", x, y);
+    afficherNotification("Tu as coupé l'arbre...");
     fermerModale();
     afficherBarreDeProgression(() => {
         remplacerBlocParCiel(x, y, monMonde);
@@ -57,7 +57,7 @@ function couperArbre(x, y) {
 // Fonction d'action casser une branche
 function casserBranches(x, y) {
     travaux = true;
-    console.log("Tu casses des branches en", x, y);
+    afficherNotification("Tu as cassé une branche.");
     fermerModale();
     afficherBarreDeProgression(() => {
         ajouterObjetDansInventaire("bois", 1);
@@ -66,7 +66,7 @@ function casserBranches(x, y) {
 // Fonction d'action miner un rocher
 function minerRocher(x, y) {
     travaux = true;
-    console.log("Tu mines le rocher en", x, y);
+    afficherNotification("Tu as miné un rocher.");
     fermerModale();
     afficherBarreDeProgression(() => {
         remplacerBlocParCiel(x, y, monMonde);
@@ -76,7 +76,7 @@ function minerRocher(x, y) {
 // Fonction d'action creuser de la terre
 function creuserTerre(x, y) {
     travaux = true;
-    console.log("Tu creuses la terre en", x, y);
+    afficherNotification("Tu as creusé la terre.");
     fermerModale();
     afficherBarreDeProgression(() => {
         remplacerBlocParCiel(x, y, monMonde);
@@ -86,12 +86,20 @@ function creuserTerre(x, y) {
             remplacerBlocParCiel(x, y + 1, monMonde);
             ajouterObjetDansInventaire("bois", 10);
         }
+        if (blocDessus.type === "legume"){
+            remplacerBlocParCiel(x, y + 1, monMonde);
+            ajouterObjetDansInventaire("legume", 4);
+        }
+        if (blocDessus.type === "graine"){
+            remplacerBlocParCiel(x, y + 1, monMonde);
+            ajouterObjetDansInventaire("graine", 1);
+        }
     });
 }
 // Fonction d'action labourer la terre
 function labourerTerre(x, y) {
     travaux = true;
-    console.log("Tu laboures la terre en", x, y);
+    afficherNotification("Tu as labouré la terre.");
     fermerModale();
     afficherBarreDeProgression(() => {
         const terre_labouree = getBlocAt(x, y);
@@ -101,7 +109,7 @@ function labourerTerre(x, y) {
 // Fonction d'action cueillir les légumes
 function cueillirLegumes(x, y) {
     travaux = true;
-    console.log("Tu cueilles les légumes en", x, y);
+    afficherNotification("Tu as cueilli des légumes.");
     fermerModale();
     afficherBarreDeProgression(() => {
         remplacerBlocParCiel(x, y, monMonde);
@@ -111,7 +119,7 @@ function cueillirLegumes(x, y) {
 // Fonction d'action creuser du sable
 function creuserSable(x, y) {
     travaux = true;
-    console.log("Tu creuses le sable en", x, y);
+    afficherNotification("Tu as creusé le sable.");
     fermerModale();
     afficherBarreDeProgression(() => {
         remplacerBlocParCiel(x, y, monMonde);
@@ -121,7 +129,7 @@ function creuserSable(x, y) {
 // Fonction d'action ramasser le bois
 function ramasserBois(x, y) {
     travaux = true;
-    console.log("Tu ramasses le bois", x, y);
+    afficherNotification("Tu as ramassé du bois.");
     fermerModale();
     afficherBarreDeProgression(() => {
         remplacerBlocParCiel(x, y, monMonde);
@@ -131,7 +139,7 @@ function ramasserBois(x, y) {
 // Fonction d'action ramasser la laine
 function ramasserLaine(x, y) {
     travaux = true;
-    console.log("Tu ramasses la laine", x, y);
+    afficherNotification("Tu as ramassé la laine.");
     fermerModale();
     afficherBarreDeProgression(() => {
         remplacerBlocParCiel(x, y, monMonde);
@@ -141,7 +149,7 @@ function ramasserLaine(x, y) {
 // Fonction d'action ramasser le lait
 function ramasserLait(x, y) {
     travaux = true;
-    console.log("Tu ramasses le seau de lait", x, y);
+    afficherNotification("Tu as ramassé le seau de lait.");
     fermerModale();
     afficherBarreDeProgression(() => {
         remplacerBlocParCiel(x, y, monMonde);
@@ -151,7 +159,7 @@ function ramasserLait(x, y) {
 // Fonction d'action ramasser une graine
 function ramasserGraine(x, y) {
     travaux = true;
-    console.log("Tu ramasses la graine", x, y);
+    afficherNotification("Tu as ramassé la graine.");
     fermerModale();
     afficherBarreDeProgression(() => {
         remplacerBlocParCiel(x, y, monMonde);
@@ -161,7 +169,7 @@ function ramasserGraine(x, y) {
 // Fonction d'action piocher minerais
 function piocher(type, x, y) {
     travaux = true;
-    console.log("Tu pioches le minerais", x, y);
+    afficherNotification("Tu as pioché le minerais.");
     fermerModale();
     afficherBarreDeProgression(() => {
         remplacerBlocParCiel(x, y, monMonde);
@@ -171,7 +179,7 @@ function piocher(type, x, y) {
 // Fonction d'action contempler
 function contempler(type, x, y) {
     travaux = true;
-    console.log("Tu contemples les lieux", x, y);
+    afficherNotification("Tu contemples les lieux...");
     fermerModale();
     afficherBarreDeProgression(() => {
         if (type === "arbre") {
@@ -193,7 +201,7 @@ function contempler(type, x, y) {
                 afficherNotification("Tu as trouvé une graine !");
             }
             else {
-                afficherNotification("Il y a des graines dans cette herbe...");
+                afficherNotification("Il doit y avoir des graines dans cette herbe...");
             }
         }
     });
@@ -202,7 +210,7 @@ function contempler(type, x, y) {
 // Fonction d'action observer
 function observer(x, y) {
     travaux = true;
-    console.log("Tu observes l'animal", x, y);
+    afficherNotification("Tu observes l'animal...");
     fermerModaleMobs();
     afficherBarreDeProgression(() => {
     });
