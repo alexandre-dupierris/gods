@@ -10,5 +10,8 @@ Pour jouer :
 	touche D : aller à droite
 	touche Z : sauter
 	click gauche de la souris : interagir avec le monde / les animaux/ ton inventaire
-	tu peux creuser, contempler, labourer les blocs...
-	contempler les arbres ou l'herbe, permet de récupérer des ressources
+	tu peux creuser, poser, contempler, labourer les blocs...
+	contempler les arbres ou l'herbe, permet de récupérer des ressources.
+	tu peux planter des graines qui peuvent pousser si posées sur de la terre labourée.
+	les plantes permettent de nourrir les moutons qui peuvent alors se reproduire.
+	tu peux manger des légumes ou de la viande.
