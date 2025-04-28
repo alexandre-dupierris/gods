@@ -152,22 +152,28 @@ function majAffichageInventaire() {
             }
         }
 
-        // Gestion du tooltip pour chaque case de l'inventaire
-        caseDiv.addEventListener("mouseenter", (e) => {
-            if (objet.id) {
-                tooltipElement.textContent = objet.id;
+        // D'abord enlever tous les anciens événements
+        caseDiv.onmouseenter = null;
+        caseDiv.onmousemove = null;
+        caseDiv.onmouseleave = null;
+
+        // Puis réassigner des événements propres
+        caseDiv.onmouseenter = (e) => {
+            const objetActuel = monInventaire[i]; // << Lire l'état actuel ici
+            if (objetActuel.id) {
+                tooltipElement.textContent = objetActuel.id;
                 tooltipElement.style.display = "block";
             }
-        });
+        };
 
-        caseDiv.addEventListener("mousemove", (e) => {
+        caseDiv.onmousemove = (e) => {
             tooltipElement.style.left = (e.pageX + 10) + "px";
             tooltipElement.style.top = (e.pageY + 10) + "px";
-        });
+        };
 
-        caseDiv.addEventListener("mouseleave", () => {
+        caseDiv.onmouseleave = () => {
             tooltipElement.style.display = "none";
-        });
+        };
 
     });
 }
