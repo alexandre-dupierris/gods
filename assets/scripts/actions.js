@@ -44,6 +44,37 @@ function tuerLeMouton(x, y) {
     });
 }
 
+// Fonction d'action nourrir le mounton
+function nourrirLeMouton(x, y){
+    const planteDispo = utiliserPlante();
+    fermerModaleMobs();
+    if (planteDispo) {
+        travaux = true;
+        afficherNotification("Tu nourris le mouton...");
+        afficherBarreDeProgression(() => {
+            if (Math.random() < 1/3) {
+                mesMobs.push({
+                    type: "mouton",
+                    x,
+                    y,
+                    direction: Math.random() < 0.5 ? "gauche" : "droite",
+                    actif: Math.random() < 0.5,
+                    vitesseX: 0.05,
+                    velociteY: 0,
+                    estAuSol: false,
+                    dernierSaut: 0,
+                    prochainChangementDirection: Date.now() + 1000 + Math.random() * 4000,
+                    prochainEtat: Date.now() + 1000 + Math.random() * 3000
+                });
+                afficherNotification("Un nouveau mouton est né !");
+            }
+        });
+    }
+    else {
+        afficherNotification("Il faut des plantes pour le nourrir...");
+    }
+}
+
 // Fonction d'action couper un arbre
 function couperArbre(x, y) {
     travaux = true;
@@ -112,8 +143,22 @@ function cueillirLegumes(x, y) {
     fermerModale();
     afficherBarreDeProgression(() => {
         remplacerBlocParCiel(x, y, monMonde);
-        ajouterObjetDansInventaire("legume", 8);
-        afficherNotification("Tu as cueilli des légumes.");
+        const arrondi = Math.floor(Math.random() * 4) + 1;
+        ajouterObjetDansInventaire("legume", (8 - arrondi));
+        ajouterObjetDansInventaire("graine_de_legume", arrondi);
+        afficherNotification("Tu as cueilli des graines et légumes.");
+    });
+}
+// Fonction d'action cueillir la plante
+function cueillirPlante(x, y) {
+    travaux = true;
+    fermerModale();
+    afficherBarreDeProgression(() => {
+        remplacerBlocParCiel(x, y, monMonde);
+        const arrondi = Math.floor(Math.random() * 3);
+        ajouterObjetDansInventaire("plante", 1);
+        ajouterObjetDansInventaire("graine_de_plante", arrondi);
+        afficherNotification("Tu as cueilli des graines et la plante.");
     });
 }
 // Fonction d'action creuser du sable
@@ -157,12 +202,12 @@ function ramasserLait(x, y) {
     });
 }
 // Fonction d'action ramasser une graine
-function ramasserGraine(x, y) {
+function ramasserGraine(type, x, y) {
     travaux = true;
     fermerModale();
     afficherBarreDeProgression(() => {
         remplacerBlocParCiel(x, y, monMonde);
-        ajouterObjetDansInventaire("graine", 1);
+        ajouterObjetDansInventaire(type, 1);
         afficherNotification("Tu as ramassé la graine.");
     });
 }

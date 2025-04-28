@@ -36,7 +36,8 @@ function ouvrirModaleMobs(mouton) {
         <button onclick="observer(${mouton.x}, ${mouton.y})">Observer le mouton</button>
         <button onclick="tondreLesMoutons(${mouton.x}, ${mouton.y})">Prélever de la laine</button>
         <button onclick="traireLeMouton(${mouton.x}, ${mouton.y})">Tirer le lait</button>
-        <button onclick="tuerLeMouton(${mouton.x}, ${mouton.y})">Tuer le mouton</button>
+        <button onclick="tuerLeMouton(${mouton.x}, ${mouton.y})">Tuer</button>
+        <button onclick="nourrirLeMouton(${mouton.x}, ${mouton.y})">Nourrir</button>
     `;
     
     contenu.innerHTML = html;

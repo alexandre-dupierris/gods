@@ -2,13 +2,13 @@
     {
       "id": "a01",
       "action": "temps de jeu",
-      "description": "Le personnage passe beaucoup de temps dans le monde.",
+      "description": "Passer du temps dans le monde.",
       "effects": { "Maître du Temps": 3 }
     },
     {
       "id": "a02",
       "action": "observation de l'Univers",
-      "description": "Observer les étoiles, les constellations, cartographier le ciel.",
+      "description": "Observer le monde",
       "effects": { "Maître du Temps": 1 }
     },
     {

@@ -1,0 +1,78 @@
+[
+    {
+        "id": "a00",
+        "action": "naissance",
+        "description": "Arriver dans le monde.",
+        "effects": { "Protecteur de la Vie": 20 }
+      },
+    {
+      "id": "a01",
+      "action": "temps de jeu",
+      "description": "Passer un jour dans le monde.",
+      "effects": { "Maître du Temps": 10 }
+    },
+    {
+        "id": "a02",
+        "action": "observation de l'Univers",
+        "description": "Contempler le monde",
+        "effects": {
+            "Maître du Temps": 1,
+            "Détenteur de la Vérité": 1
+          }
+    },
+    {
+        "id": "a03",
+        "action": "planter des végétaux",
+        "description": "Cultiver ou replanter des espèces végétales.",
+        "effects": { "Protecteur de la Vie": 2 }
+    },
+    {
+        "id": "a04",
+        "action": "tuer des animaux",
+        "description": "Mettre fin à la vie d’un animal.",
+        "effects": {
+          "Protecteur de la Vie": -20,
+          "Gardien des Enfers": 10
+        }
+    },
+    {
+        "id": "a05",
+        "action": "couper des arbres",
+        "description": "Abattre des arbres pour récolter du bois.",
+        "effects": { "Protecteur de la Vie": -5 }
+    },
+    {
+        "id": "a06",
+        "action": "ramasser des végétaux",
+        "description": "Récolter des plantes.",
+        "effects": { "Protecteur de la Vie": -2 }
+    },
+    {
+        "id": "a07",
+        "action": "détruire une espèce",
+        "description": "Faire disparaître totalement une espèce vivante.",
+        "effects": {
+          "Porteur de la Connaissance": -50,
+          "Profondeur de l'Oubli": 50,
+          "Gardien des Enfers": 50
+        }
+    },
+    {
+        "id": "a08",
+        "action": "bâtir",
+        "description": "Ériger une structure.",
+        "effects": {
+          "Sauveur des Souvenirs": 1,
+          "Profondeur de l'Oubli": -1
+        }
+    },
+    {
+        "id": "a09",
+        "action": "démolir",
+        "description": "Détruire une structure.",
+        "effects": {
+          "Sauveur des Souvenirs": -1,
+          "Profondeur de l'Oubli": 1
+        }
+    }
+]

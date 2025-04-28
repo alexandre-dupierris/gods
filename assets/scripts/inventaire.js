@@ -26,7 +26,7 @@ function initialiserInventaire() {
     }
     // Ajouter l’événement de clic et gestion du curseur
     inventaire.addEventListener("click", function(e) {
-            // Trouver l'élément .case-inventaire le plus proche
+        // Trouver l'élément .case-inventaire le plus proche
         const caseInventaire = e.target.closest('.case-inventaire');
         if (caseInventaire) {
             const index = parseInt(caseInventaire.dataset.index);
@@ -194,5 +194,29 @@ function ajouterObjetDansInventaire(idObjet, quantite) {
         }
     }
     console.warn("Inventaire plein !");
+    return false;
+}
+
+// Fonction d'utilisation d'une plante
+function utiliserPlante() {
+    for (let i = 0; i < monInventaire.length; i++) {
+        const item = monInventaire[i];
+        if (item.id === "plante") {
+            // Diminuer la quantité de plante
+            item.quantite -= 1;
+
+            // Si la quantité tombe à 0, retirer l'objet
+            if (item.quantite <= 0) {
+                monInventaire[i] = { id: null, quantite: 0 };
+            }
+
+            // Mettre à jour l'affichage de l'inventaire
+            majAffichageInventaire();
+
+            // On a trouvé et utilisé une plante, pas besoin de continuer
+            return true;
+        }
+    }
+    // Aucune plante trouvée
     return false;
 }

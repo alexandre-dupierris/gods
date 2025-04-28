@@ -31,7 +31,10 @@ const blocTypes = {
     ln: "laine",
     g: "graine",
     tl: "terre_labouree",
-    lg: "legume"
+    lg: "legume",
+    gl: "graine_de_legume",
+    gp: "graine_de_plante",
+    p: "plante"
 };
 
 // Dictionnaire des images
@@ -106,7 +109,7 @@ physique = {
     velocite: { x: 0, y: 0 },
     estAuSol: false,
     blocSolides: ["terre_herbeuse", "terre", "sable", "roche", "mur", "diamant", "or", "cuivre", "fer", "charbon", "bois", "laine", "terre_labouree"],
-    blocTraversables: ["ciel", "eau", "vide", "arbre", "lait", "graine", "legume"]
+    blocTraversables: ["ciel", "eau", "vide", "arbre", "lait", "graine", "legume", "graine_de_legume", "graine_de_plante", "plante"]
 };
 
 // Variables pour le tooltip (affichage au survol des blocs)
@@ -216,11 +219,9 @@ if (sauvegarde) {
         "Profondeur de l'Oubli": 0
     };
     actions = [{
-        id: "a1",
-        nom: "Naître",
-        dieu: "Protecteur de la Vie",
-        valeur: +1,
-        tour: 1
+        id: "a0",
+        tour: 1,
+        quantite: 1
     }];
     monMonde = genererMonde();
     playerLocalisation = [0, 0];

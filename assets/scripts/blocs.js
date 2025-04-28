@@ -19,7 +19,7 @@ function updateHerbe() {
             const blocDessus = getBlocAt(x, y + 1);
             if (bloc && bloc.type === "terre") {
                 // Vérifier si au-dessus c'est exposé
-                if (blocDessus && ["ciel", "vide", "eau", "arbre", "lait", "graine"].includes(blocDessus.type)) {
+                if (blocDessus && ["ciel", "vide", "eau", "arbre", "lait", "graine", "graine_de_legume", "graine_de_plante", "legume", "plante"].includes(blocDessus.type)) {
 
                     // Vérifie les voisins à gauche et à droite (haut, milieu, bas)
                     const voisinsHerbe = [
@@ -41,8 +41,21 @@ function updateHerbe() {
             }
             else if (bloc && bloc.type === "terre_labouree"){
                 if (blocDessus && blocDessus.type === "graine") {
+                    if (Math.random() < 0.01) {
+                        blocDessus.type = "legume";
+                    }
+                    else if (Math.random() < 0.02) {
+                        blocDessus.type = "plante";
+                    }
+                }
+                if (blocDessus && blocDessus.type === "graine_de_legume") {
                     if (Math.random() < 0.02) {
                         blocDessus.type = "legume";
+                    }
+                }
+                if (blocDessus && blocDessus.type === "graine_de_plante") {
+                    if (Math.random() < 0.02) {
+                        blocDessus.type = "plante";
                     }
                 }
             }
@@ -58,7 +71,7 @@ function estExpose(bloc) {
         getBlocAt(bloc.x + 1, bloc.y), // droite
         getBlocAt(bloc.x - 1, bloc.y)  // gauche
     ];
-    return voisins.some(b => b && ["ciel", "arbre", "eau", "lait", "bois", "laine", "graine", "legume"].includes(b.type));
+    return voisins.some(b => b && ["ciel", "arbre", "eau", "lait", "bois", "laine", "graine", "legume", "graine_de_legume", "graine_de_plante", "plante"].includes(b.type));
 }
 
 // Fonction d'interaction avec les blocs
@@ -120,6 +133,15 @@ function ouvrirModaleBloc(bloc) {
                 `;
                 break;
 
+            case "plante":
+                html = `
+                    <h2>Plante</h2>
+                    <p>Une magnifique plante</p>
+                    <button onclick="contempler('${bloc.type}', ${bloc.x}, ${bloc.y})">Contempler la plante</button>
+                    <button onclick="cueillirPlante(${bloc.x}, ${bloc.y})">Cueillir</button>
+                `;
+                break;
+
             case "sable":
                 html = `
                     <h2>Sable</h2>
@@ -166,11 +188,13 @@ function ouvrirModaleBloc(bloc) {
                 break;
 
             case "graine":
+            case "graine_de_legume":
+            case "graine_de_plante":
                 html = `
                     <h2>Graine</h2>
                     <p>Une graine plantée là</p>
                     <button onclick="contempler('${bloc.type}', ${bloc.x}, ${bloc.y})">Contempler la graine</button>
-                    <button onclick="ramasserGraine(${bloc.x}, ${bloc.y})">Ramasser</button>
+                    <button onclick="ramasserGraine('${bloc.type}', ${bloc.x}, ${bloc.y})">Ramasser</button>
                 `;
                 break;
 
@@ -221,18 +245,23 @@ function ouvrirModaleBloc(bloc) {
                         }
                     }
                     // Vérification spéciale pour poser des graines, ou du lait
-                    if (objetPorte.id === "graine" || objetPorte.id === "lait") {
+                    if (objetPorte.id === "graine" || objetPorte.id === "lait" || objetPorte.id === "graine_de_legume" || objetPorte.id === "graine_de_plante") {
                         if (bloc.type === "eau") {
                             afficherNotification("Cela doit être posé sur la terre ferme...");
                             break;
                         }
+                    }
+                    // Vérification spéciale pour une plante
+                    if (objetPorte.id === "plante") {
+                        afficherNotification("On ne peut pas replanter ça...");
+                        break;
                     }
     
                     bloc.type = objetPorte.id;
                     objetPorte.quantite -= 1;
                     const item = monInventaire[indexSelectionne];
                     item.quantite -= 1;
-                    if (item.quantite === 0) {
+                    if (item.quantite <= 0) {
                         item.id = null;
                         objetPorte.id = null;
                         itemSelectionne = null;
