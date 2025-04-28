@@ -155,7 +155,7 @@ function cueillirPlante(x, y) {
     fermerModale();
     afficherBarreDeProgression(() => {
         remplacerBlocParCiel(x, y, monMonde);
-        const arrondi = Math.floor(Math.random() * 3);
+        const arrondi = Math.floor(Math.random() * 2 + 1);
         ajouterObjetDansInventaire("plante", 1);
         ajouterObjetDansInventaire("graine_de_plante", arrondi);
         afficherNotification("Tu as cueilli des graines et la plante.");
