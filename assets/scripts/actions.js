@@ -143,8 +143,8 @@ function cueillirLegumes(x, y) {
     fermerModale();
     afficherBarreDeProgression(() => {
         remplacerBlocParCiel(x, y, monMonde);
-        const arrondi = Math.floor(Math.random() * 4) + 1;
-        ajouterObjetDansInventaire("legume", (8 - arrondi));
+        const arrondi = Math.floor(Math.random() * 2) + 1;
+        ajouterObjetDansInventaire("legume", (6 - arrondi));
         ajouterObjetDansInventaire("graine_de_legume", arrondi);
         afficherNotification("Tu as cueilli des graines et légumes.");
     });
