@@ -17,7 +17,7 @@ function genererMobs() {
             dernierSaut: 0,
             prochainChangementDirection: Date.now() + 1000 + Math.random() * 4000,
             prochainEtat: Date.now() + 1000 + Math.random() * 3000
-        });        
+        });
     }
     return mobs;
 }
