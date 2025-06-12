@@ -1,5 +1,6 @@
 // Variables de jeu en pause
 let jeuEnPause = false
+let joueurMort = false
 const pauseOverlay = document.getElementById('pauseOverlay')
 const resumeButton = document.getElementById('resumeButton')
 
@@ -177,9 +178,11 @@ document.getElementById('pauseButton').addEventListener('click', () => {
 // Ecoute du bouton pour sortir de pause
 // Quand on clique sur le bouton plein écran
 resumeButton.addEventListener('click', () => {
-  jeuEnPause = false
-  lastTime = performance.now()
-  pauseOverlay.style.display = 'none'
+  if (joueurMort === false) {
+    jeuEnPause = false
+    lastTime = performance.now()
+    pauseOverlay.style.display = 'none'
+  }
 })
 
 // Mise en pause quand fenêtre masquée
